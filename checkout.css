@@ -1,0 +1,257 @@
+/* Mini Marketplace — Member 3: Checkout styles
+   Load after the internal CSS in index.html.
+   Uses the shared palette and the existing 576px mobile breakpoint.
+   All rules are scoped to #checkout-page to protect the shared header.
+*/
+
+#checkout-page {
+  --checkout-green: var(--Primarygreen, #1F7669);
+  --checkout-text: var(--Darktext, #202B2A);
+  --checkout-bg: var(--Warmbackground, #F7F6F0);
+  --checkout-soft: var(--Softgreenbackground, #EEF3EF);
+  --checkout-mint: var(--Palemint, #E8F4EE);
+  --checkout-border: var(--Cardborder, #EAEBE6);
+  --checkout-muted: var(--Mutedtext, #7A8580);
+  --checkout-error: var(--Errorred, #C74740);
+  width: min(100% - 40px, 980px);
+  margin: 0 auto 64px;
+  color: var(--checkout-text);
+}
+
+/* JavaScript switches sections with the hidden attribute. */
+#checkout-page[hidden] {
+  display: none !important;
+}
+
+#checkout-page .checkout-heading,
+#checkout-page h1 {
+  margin: 0 0 8px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+#checkout-page .checkout-subtitle {
+  margin: 0 0 26px;
+  color: var(--checkout-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#checkout-page #checkout-form {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  padding: clamp(20px, 3vw, 36px);
+  background: #fff;
+  border: 1px solid var(--checkout-border);
+  border-radius: 18px;
+  box-shadow: 0 5px 24px rgba(32, 43, 42, 0.045);
+}
+
+#checkout-page .checkout-section-title {
+  margin: 0 0 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#checkout-page #checkout-form label {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--checkout-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+#checkout-page #checkout-form input,
+#checkout-page #checkout-form textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 13px 15px;
+  border: 1.5px solid var(--checkout-border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--checkout-text);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+#checkout-page #checkout-form input::placeholder,
+#checkout-page #checkout-form textarea::placeholder {
+  color: var(--checkout-muted);
+  opacity: 0.8;
+}
+
+#checkout-page #checkout-form textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+#checkout-page #checkout-form input:focus-visible,
+#checkout-page #checkout-form textarea:focus-visible {
+  outline: none;
+  border-color: var(--checkout-green);
+  box-shadow: 0 0 0 3px rgba(31, 118, 105, 0.14);
+}
+
+#checkout-page #checkout-form [aria-invalid="true"] {
+  border-color: var(--checkout-error);
+}
+
+#checkout-page #checkout-form [aria-invalid="true"]:focus-visible {
+  box-shadow: 0 0 0 3px rgba(199, 71, 64, 0.12);
+}
+
+/* Error nodes appear directly after their associated field. */
+#checkout-page .checkout-error {
+  min-height: 0;
+  margin: 0 0 18px;
+  color: var(--checkout-error);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+#checkout-page .checkout-error:not(:empty) {
+  margin-top: 6px;
+}
+
+#checkout-page #checkout-cart-error:not(:empty) {
+  padding: 11px 13px;
+  border: 1px solid rgba(199, 71, 64, 0.25);
+  border-radius: 9px;
+  background: #FFF5F3;
+}
+
+/* Optional wrapper for the price and the submit button. */
+#checkout-page .checkout-order-panel {
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid var(--checkout-border);
+  border-radius: 12px;
+  background: var(--checkout-soft);
+}
+
+#checkout-page .checkout-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  color: var(--checkout-muted);
+}
+
+#checkout-page #checkout-total {
+  color: var(--checkout-green);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+#checkout-page #place-order-button {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--checkout-green);
+  color: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+#checkout-page #place-order-button:hover:not(:disabled) {
+  background: #185E54;
+}
+
+#checkout-page #place-order-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+#checkout-page #place-order-button:focus-visible {
+  outline: 3px solid var(--Orangeaccent, #F18A53);
+  outline-offset: 3px;
+}
+
+#checkout-page #place-order-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#checkout-page .checkout-privacy-note {
+  margin: 14px 0 0;
+  color: var(--checkout-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Optional desktop form grid: use a wrapper only if Member 4 adds one. */
+@media (min-width: 1024px) {
+  #checkout-page .checkout-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 22px;
+  }
+
+  #checkout-page .checkout-fields-grid .checkout-field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Match the shared header's mobile breakpoint. */
+@media (max-width: 576px) {
+  #checkout-page {
+    width: calc(100% - 28px);
+    margin-bottom: 36px;
+  }
+
+  #checkout-page .checkout-heading,
+  #checkout-page h1 {
+    font-size: 1.8rem;
+  }
+
+  #checkout-page .checkout-subtitle {
+    margin-bottom: 18px;
+    font-size: 0.875rem;
+  }
+
+  #checkout-page #checkout-form {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  #checkout-page #checkout-form input,
+  #checkout-page #checkout-form textarea {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #checkout-page .checkout-order-panel {
+    padding: 16px;
+  }
+
+  #checkout-page #place-order-button {
+    min-height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #checkout-page #checkout-form input,
+  #checkout-page #checkout-form textarea,
+  #checkout-page #place-order-button {
+    transition: none;
+  }
+}
